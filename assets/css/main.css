@@ -1,18 +1,8 @@
-/**
-* Template Name: Style
-* Template URL: https://bootstrapmade.com/style-bootstrap-portfolio-template/
-* Updated: Jul 02 2025 with Bootstrap v5.3.7
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 
 @charset "UTF-8";
 
-/*--------------------------------------------------------------
-# Font & Color Variables
-# Help: https://bootstrapmade.com/color-system/
---------------------------------------------------------------*/
-/* Fonts */
+
 :root {
   --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --heading-font: "Quicksand",  sans-serif;
@@ -20,40 +10,71 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #727272; /* Background color for the entire website, including individual sections */
-  --default-color: #ffffff; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #d4d4d4; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #000000; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #000000; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
-}
-
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #7d8a99;  /* The default color of the main navmenu links */
-  --nav-hover-color: #a0abb9; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #535353; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #505152a2; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #acc4e0; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #ffffff; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  /* Rouge */
+  --color-red-lightest: #F5D3D7;
+  --color-red-light: #E77A84;
+  --color-red: #B31C2A; /* Accent principal */
+  --color-red-dark: #7D141E;
+  --color-red-darkest: #3C0A0E;
+
+  /* Gris */
+  --color-gray-lightest: #F7F9FA;
+  --color-gray-light: #E2E6EB;
+  --color-gray: #B0B7C2;
+  --color-gray-dark: #5A606A;
+  --color-gray-darkest: #1C1E22;
+
+  /* Noirs */
+  --color-black: #000000;
+  --color-black-soft: #111111;
 }
 
-/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
-
-.light-background {
-  --background-color: #f7faff;
-  --surface-color: #ffffff;
-}
-
-.dark-background {
-  --background-color: #0d141d;
-  --default-color: #ffffff;
+.dark-theme {
+  --background-color: var(--color-black);
+  --default-color: var(--color-gray-light);
   --heading-color: #ffffff;
-  --accent-color: #afcdf1;
-  --surface-color: #94979b;
+  --accent-color: var(--color-red);
+  --surface-color: var(--color-black-soft);
   --contrast-color: #ffffff;
+
+  /* Nav */
+  --nav-color: var(--color-gray-light);
+  --nav-hover-color: var(--color-red);
+  --nav-mobile-background-color: var(--color-black-soft);
+  --nav-dropdown-background-color: #1c1c1ca2;
+  --nav-dropdown-color: var(--color-gray-light);
+  --nav-dropdown-hover-color: #ffffff;
 }
+
+.light-theme {
+  --background-color: var(--color-gray-lightest); /* Fond clair */
+  --default-color: var(--color-gray-darkest); /* Texte principal sombre */
+  --heading-color: var(--color-black);
+  --accent-color: var(--color-red); /* Accent identique au sombre */
+  --surface-color: #ffffff; /* Surfaces blanches (cartes, box) */
+  --contrast-color: #000000;
+
+  /* Nav */
+  --nav-color: var(--color-gray-dark);
+  --nav-hover-color: var(--color-red-dark);
+  --nav-mobile-background-color: #ffffff;
+  --nav-dropdown-background-color: #f0f0f0ee;
+  --nav-dropdown-color: var(--color-gray-darkest);
+  --nav-dropdown-hover-color: var(--color-red);
+}
+
+
+/* Navigation */
+/* :root {
+  --nav-color: var(--color-gray-light);
+  --nav-hover-color: var(--color-red);
+  --nav-mobile-background-color: var(--color-black-soft);
+  --nav-dropdown-background-color: #1c1c1ca2;
+  --nav-dropdown-color: var(--color-gray-light);
+  --nav-dropdown-hover-color: #ffffff;
+} */
+
 
 /* Smooth scroll */
 :root {
@@ -67,6 +88,51 @@ body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
+}
+
+/* --- Switch toggle --- */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem; /* ✅ On place à gauche au lieu de right */
+  z-index: 1000;
+}
+
+.switch {
+  display: block;
+  width: 50px;
+  height: 25px;
+  background: var(--surface-color);
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.switch::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 2.5px;
+  left: 3px;
+  transition: 0.3s;
+}
+
+#theme-switch {
+  display: none;
+}
+
+#theme-switch:checked + .switch {
+  background: var(--surface-color);
+}
+
+#theme-switch:checked + .switch::after {
+  transform: translateX(25px);
+  background: var(--accent-color);
 }
 
 a {
@@ -159,7 +225,7 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 32px;
+  max-height: 42px;
   margin-right: 8px;
 }
 

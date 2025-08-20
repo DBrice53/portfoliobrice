@@ -9,7 +9,7 @@
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="assets/img/logo.png" rel="apple-touch-icon" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -44,15 +44,14 @@
       <div
         class="container-fluid position-relative d-flex align-items-center justify-content-between"
       >
-        <a href="index.html" class="logo d-flex align-items-center">
-          
-        </a>
+        <a href="index.html" class="logo d-flex align-items-center"> </a>
 
         <nav id="navmenu" class="navmenu">
           <div class="profile-img">
             <img
               src="assets/img/profile/brice2.jpeg"
-              alt=""  style="height: 200px;"
+              alt=""
+              style="height: 200px"
               class="img-fluid rounded-circle"
             />
           </div>
@@ -62,7 +61,7 @@
             class="logo d-flex align-items-center justify-content-center active"
           >
             <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="assets/img/logo.webp" alt=""> -->
+            <img src="assets/img/logo.png" alt="" />
             <h1 class="sitename">Brice DENAKPO</h1>
           </a>
 
@@ -113,6 +112,10 @@
     </header>
 
     <main class="main">
+      <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch" />
+        <label for="theme-switch" class="switch"></label>
+      </div>
       <!-- Hero Section -->
       <section id="hero" class="hero section">
         <div class="container">
@@ -130,7 +133,7 @@
                     data-typed-items="Logiciel, Base de donnée, Freelancer, Artist"
                   ></span>
                 </h1>
-                <p class="lead text-white">
+                <p class="lead">
                   I create digital experiences that inspire and engage. With a
                   passion for clean design and innovative solutions, I transform
                   ideas into beautiful, functional realities.
@@ -174,8 +177,12 @@
                   data-aos="fade-up"
                   data-aos-delay="300"
                 >
-                  <a href="#portfolio" class="btn btn-primary">Voir mes travaux</a>
-                  <a href="#contact" class="btn btn-outline">Entrer en contact</a>
+                  <a href="#portfolio" class="btn btn-primary"
+                    >Voir mes travaux</a
+                  >
+                  <a href="#contact" class="btn btn-outline"
+                    >Entrer en contact</a
+                  >
                 </div>
 
                 <div
@@ -197,11 +204,10 @@
               data-aos-delay="200"
             >
               <div class="image-container">
-               
                 <img
                   src="assets/img/profile/brice2.jpeg"
                   alt="Portfolio Hero"
-                  class="img-fluid hero-main-image" 
+                  class="img-fluid hero-main-image"
                 />
                 <div class="image-overlay"></div>
               </div>
@@ -1930,6 +1936,30 @@
     <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+      const toggle = document.getElementById("theme-switch");
+      const body = document.body;
+
+      // Charger le thème sauvegardé
+      if (localStorage.getItem("theme") === "light") {
+        body.classList.remove("dark-theme");
+        body.classList.add("light-theme");
+        toggle.checked = true;
+      }
+
+      toggle.addEventListener("change", () => {
+        if (toggle.checked) {
+          body.classList.remove("dark-theme");
+          body.classList.add("light-theme");
+          localStorage.setItem("theme", "light");
+        } else {
+          body.classList.remove("light-theme");
+          body.classList.add("dark-theme");
+          localStorage.setItem("theme", "dark");
+        }
+      });
+    </script>
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
