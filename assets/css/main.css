@@ -2527,7 +2527,7 @@ section,
 }
 
 .contact .contact-form .btn {
-  background-color: var(--contrast-color);
+  background-color: var(--accent-color);
   color: var(--default-color);
   padding: 1rem 2rem;
   border-radius: 2rem;
