@@ -91,49 +91,70 @@ body {
 }
 
 /* --- Switch toggle --- */
+/* --- Switch toggle avec icônes --- */
 .theme-toggle {
   position: fixed;
   top: 1rem;
-  left: 1rem; /* ✅ On place à gauche au lieu de right */
+  left: 1rem; /* placé en haut à gauche */
   z-index: 1000;
 }
 
 .switch {
-  display: block;
-  width: 50px;
-  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60px;
+  height: 30px;
   background: var(--surface-color);
   border-radius: 25px;
   position: relative;
   cursor: pointer;
+  padding: 0 8px;
   transition: background 0.3s;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
+.switch .icon {
+  font-size: 14px;
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.3s;
+}
+
+.switch .moon i { color: var(--accent-color); }
+.switch .sun i { color: var(--accent-color); }
+
+/* Bouton rond qui glisse */
 .switch::after {
   content: '';
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   background: var(--accent-color);
   border-radius: 50%;
   position: absolute;
-  top: 2.5px;
+  top: 3px;
   left: 3px;
-  transition: 0.3s;
+  transition: transform 0.3s, background 0.3s;
+  z-index: 1;
 }
 
 #theme-switch {
   display: none;
 }
 
-#theme-switch:checked + .switch {
-  background: var(--surface-color);
+/* Quand activé (mode clair) */
+#theme-switch:checked + .switch::after {
+  transform: translateX(30px);
 }
 
-#theme-switch:checked + .switch::after {
-  transform: translateX(25px);
-  background: var(--accent-color);
+#theme-switch:checked + .switch .moon {
+  opacity: 0.4;
 }
+
+#theme-switch:not(:checked) + .switch .sun {
+  opacity: 0.4;
+}
+
 
 a {
   color: var(--accent-color);
